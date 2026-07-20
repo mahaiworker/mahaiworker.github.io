@@ -1,0 +1,18 @@
+body {
+    background-color: #303030;
+}
+.content {
+    color:aquamarine;
+}
+#title {
+    font-weight: bold;
+    background-color: linear-gradient(0deg,#6600c8,#8800c6);
+}
+#title-div {
+    color:linear-gradient(0deg,#6600c8,#8800c6);
+    border-radius: 8px;
+}
+#content-div {
+    color:#6700c84b;
+    border-radius: 8px;
+}

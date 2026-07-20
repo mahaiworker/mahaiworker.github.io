@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" id="html">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C:\Windows\system32\cmd.exe</title>
+    <style>
+        html {
+            background-color: black;
+        }
+        body, #terminal_demo {
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery.terminal/2.35.2/css/jquery.terminal.min.css" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.terminal/2.35.2/js/jquery.terminal.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/pyodide/v0.26.1/full/pyodide.js"></script>
+    
+</head>
+<body>
+    <div id="term_demo"></div>
+    <script>
+        var term = $('#term_demo').terminal(function(command,term){
+            let comm = command.split(' ')
+            try {
+                if (comm[0] === 'hello')
+                {
+                    term.echo("你好呀，我是DarkGodJim001,今天你开心吗？");
+                }else if(comm[0] === "back"){
+                    window.history.back()
+                }else if(comm[0] === "goto"){
+                    term.echo("自动为你导航到" + comm[1])
+                    window.open(comm[1])
+                }else if(comm[0] === "bg"){
+                    document.getElementById('term_demo').style.backgroundColor = comm[1];
+                    document.getElementById('html').style.backgroundColor = comm[1];
+                    term.echo("这是我的新样式！")
+                }else if(comm[0] === "fg"){
+                    document.getElementById('term_demo').style.color = comm[1];
+                    document.getElementById('html').style.color = comm[1];
+                    term.echo("这是我的新样式！")
+                }else if(comm[0] === "js"){
+                    let code = comm.slice(1).join(" ");
+                    console.log(`Code ${code}`)
+                    try{
+                        let result = eval(code);
+
+                        if (result != undefined)
+                        {
+                            term.echo(`js> ${result}`);
+                        }        
+
+                        term.echo("程序执行成功!");
+                    }catch (error){
+                        term.echo(`程序执行失败!错误信息\n${error.message}`)
+                    }
+                }
+            }catch(error){
+                term.echo("我没能理解啊。你可以换一种说法再问我！")
+            }
+        },{
+            prompt : "\nhttps://darkgodjim001.github.io/app/cmd> ",
+            greetings : `DarkGodJim001 CMD [版本 26.0.1]
+(c) DarkGodJim001 Corporation。保留所有权利。`,
+            cursorBlink: true,           
+            cursorStyle: 'bar',        
+            cursorColor: '#ffffff',     
+            glow: true
+        })
+    </script>
+</body>
+</html>

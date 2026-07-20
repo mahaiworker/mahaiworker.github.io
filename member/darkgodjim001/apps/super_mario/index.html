@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SUPER MARIO</title>
+    
+</head>
+<body>
+    
+    <iframe src="https://classicjoy.games/embed?slug=super-mario-bros" width="800" height="600" frameborder="0" allowfullscreen id="emulator"></iframe>
+
+    <script>
+    // 等 iframe 加载完
+    document.getElementById('你的iframeID').onload = function() {
+        var iframe = document.getElementById('你的iframeID');
+        var win = iframe.contentWindow;
+
+        // 尝试注入无限命（每帧锁定）
+        function lockLives() {
+            try {
+                // 方法1：如果 EmulatorJS 有全局 emulator 对象
+                if (win.emulator && win.emulator.writeMemory) {
+                    win.emulator.writeMemory(0x075A, 0x09);
+                }
+                // 方法2：通过 postMessage 发送作弊指令（如果支持）
+                else if (win.postMessage) {
+                    win.postMessage({ type: 'cheat', address: 0x075A, value: 0x09 }, '*');
+                }
+            } catch(e) {
+                console.log('注入失败，但不影响游戏运行');
+            }
+        }
+
+        // 每秒锁一次命（防止被游戏重置）
+        setInterval(lockLives, 1000);
+    };
+</script>
+</body>
+</html>

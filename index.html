@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+
+<html>
+    <body>
+        <script src="https://tkjsapi.github.io/api/tkjs/theme.js"></script>
+        
+        <link rel="stylesheet" href="./index.css">
+
+        <div id="title-box" style="width:100%;margin:0 auto;padding-bottom: 20px;">
+            <p id="title" style="margin:0 auto;">Mahai</p>
+            <p id="title-time" style="margin-left:200px;margin:0 auto;">时间</p>
+        </div>
+        <div id="member" style="flex-direction: column;width:40%;margin-left:30px;padding:20px;flex-direction:row;margin-right: 30px;">
+            <div id="member-dgj001" class="member_">
+                <image src="https://vzge.me/face/DarkGodJim001.png" style="width:15%;" class="member"></image>
+                <p class="member">DarkGodJim001</p>
+                <button class="memberpage" onclick="window.location.href = './member/darkgodjim001/index.html'">进我主页</button>
+            </div>
+            <div id="member-cutep" class="member_">
+                <image src="https://vzge.me/face/Cute_P.png" style="width:15%;" class="member"></image>
+                <p class="member">CuteP</p>
+                <button class="memberpage" onclick="window.location.href = './member/cutep/index.html'">进我主页</button>
+            </div>
+        </div>
+
+        <script>
+            window.theme = "glass";
+
+            function updateTime(){
+                let e = document.getElementById("title-time");
+                let time = (new Date()).toLocaleTimeString([],{hour:"2-digit",minute:"2-digit"});
+
+                e.textContent = time;
+            }
+
+            updateTime();
+            setInterval(updateTime,500);
+        </script>
+    </body>
+</html>

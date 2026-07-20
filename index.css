@@ -1,0 +1,62 @@
+@font-face{
+    font-family:"mc";
+    src:url("./member/darkgodjim001/resource/Minecraft\ Seven_2.ttf");
+}
+@font-face{
+    font-family:"unifont";
+    src:url("./member/darkgodjim001/resource/unifont-16.0.03.otf");
+}
+
+body {
+    display: flex;
+    align-items: center;
+    background: linear-gradient(#000056,#210055);
+    background-attachment: fixed;
+    flex-direction: column;
+}
+div {
+    display:flex;
+    background:rgba(255,255,255,0.15);
+    backdrop-filter:blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border:1px solid rgba(255,255,255,0.24);
+
+    border-radius: 6px;
+}
+
+p{
+    font-family: 'mc','unifont';
+    font-size:24px;
+    color:azure;
+}
+
+.member_{
+    padding-top: 35px;
+    align-items: center;
+    flex-direction: column;
+    width:45%;
+}
+
+#member-dgj001 {
+    background-color: #ff075e;
+}
+#member-cutep{
+    background-color: #0772ff;
+    margin-left: 20px;
+    margin-right:30px;
+}
+button {
+    display:flex;
+    background:rgba(255,255,255,0.15);
+    backdrop-filter:blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border:1px solid rgba(255,255,255,0.24);
+
+    border-radius: 6px;
+}
+.memberpage {
+    margin-bottom: 10px;
+}
+#title-box {
+    margin-bottom: 35px;
+}

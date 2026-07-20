@@ -1,0 +1,21 @@
+@font-face {
+  font-family: "unifont";
+  src: url("../resource/unifont-16.0.03.otf") format("opentype");
+}
+@font-face {
+  font-family: "mc7";
+  src: url("../resource/Minecraft Seven_2.ttf") format("truetype");
+}
+
+copyright_div {
+    background-color: #202020;
+    display: block;
+    font-family:"mc7","unifont";
+}
+
+copyright {
+    font-size: 20px;
+    color: #ffffff;
+    display: block;
+    font-family:"mc7","unifont";
+}
