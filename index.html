@@ -3,44 +3,128 @@
 <html>
     <head>
         <title>Mahai-码海 的空间</title>
+        <link rel="icon" href="./mahai-icon.png">
     </head>
     <body>
         <script src="https://tkjsapi.github.io/api/tkjs/theme.js"></script>
         
         <link rel="stylesheet" href="./index.css">
 
-        <div id="title-box" style="width:100%;padding-bottom: 20px;text-align: center;">
-            <p id="title" style="margin:0 auto;">Mahai</p>
-            <p id="title-time" style="margin-left:200px;margin:0 auto;">时间</p>
+        <div id="title-box" style="width:100%;padding-bottom: 20px;margin:0 auto;gap:200px;justify-content: center;">
+            <img id="title-ico" src="./mahai-icon.png" style="width:6%;margin-top: 8px;">
+            <p id="title" >Mahai工作室</p>
+            <p id="title-time" style="margin-right: 16px;">时间</p>
         </div>
-        <div id="memberout" style="flex-direction: column;width:40%;margin-left:30px;padding:20px;margin-right: 30px;">
+        <div id="memberout" style="flex-direction: column;width:40%;margin-left:30px;padding:20px;margin-right: 30px;margin-top: 30px;">
             <p id="member__" style="align-items: center;">成员</p>
-            <div id="member" style="width:100%;flex-direction:row;">
-                <div id="member-dgj001" class="member_">
-                    <image src="https://vzge.me/face/DarkGodJim001.png" style="width:15%;" class="member"></image>
-                    <p class="member">DarkGodJim001</p>
-                    <button class="memberpage" onclick="window.location.href = './member/darkgodjim001/index.html'">进我主页</button>
+            <div id="member" style="width:100%;flex-direction:row;"></div>
+        </div>
+
+        <div id="bilibiliout" style="flex-direction: column;width:40%;margin-left:30px;padding:20px;margin-right: 30px;margin-top: 30px;">
+            <p id="bilibili__" style="align-items:center">Bilibili鉴赏</p>
+            <div id="bilibili" style="align-items: center;">
+
+                <div id="vd1" class="video">
+                    <p id="vd1t" class="videotitle">TkJS宣传片</p>
+                    <iframe src="https://player.bilibili.com/player.html?bvid=BV1ypNR6CEKE"></iframe>
+                    <button id="vd1b" class="videobutton" onclick="window.location.href='https://player.bilibili.com/player.html?bvid=BV1ypNR6CEKE'">全屏</button>
                 </div>
-                <div id="member-cutep" class="member_">
-                    <image src="https://vzge.me/face/Cute_P.png" style="width:15%;" class="member"></image>
-                    <p class="member">CuteP</p>
-                    <button class="memberpage" onclick="window.location.href = './member/cutep/index.html'">进我主页</button>
+                <div id="vd2" class="video">
+                    <p id="vd2t" class="videotitle">CuteP的乌托邦生存</p>
+                    <iframe src="https://player.bilibili.com/player.html?bvid=BV1ampRzEE6D"></iframe>
+                    <button id="vd2b" class="videobutton" onclick="window.location.href='https://player.bilibili.com/player.html?bvid=BV1ampRzEE6D'">全屏</button>
                 </div>
+
+            </div>
+        </div>
+
+        <div id="resout" style="flex-direction: column;width:40%;margin-left:30px;padding:20px;margin-right: 30px;margin-top: 30px;">
+            <p id="res__" style="align-items:center">精选资源</p>
+            <div id="res" style="align-items:center">
+                
+                <div id="res-tkjsdoc" class="res-block">
+                    <p>TkJS编程档案</p>
+                    <a href="https://tkjsapi.github.io/docs/index.html">传送门</a>
+                </div>
+
             </div>
         </div>
 
         <script>
             window.theme = "glass";
 
-            function updateTime(){
-                let e = document.getElementById("title-time");
-                let time = (new Date()).toLocaleTimeString([],{hour:"2-digit",minute:"2-digit"});
+            // ========== 成员数据 ==========
+            const members = [
+                {
+                    id: 'member-dgj001',
+                    username: 'DarkGodJim001',
+                    avatar: 'https://vzge.me/face/DarkGodJim001.png',
+                    pageUrl: './member/darkgodjim001/index.html'
+                },
+                {
+                    id: 'member-cutep',
+                    username: 'CuteP',
+                    avatar: 'https://vzge.me/face/Cute_P.png',
+                    pageUrl: './member/cutep/index.html'
+                }
+                // 在这里添加新成员即可，例如：
+                // {
+                //     id: 'member-new',
+                //     username: 'NewUser',
+                //     avatar: 'https://example.com/avatar.png',
+                //     pageUrl: './member/newuser/index.html'
+                // }
+            ];
 
+            // ========== 动态生成成员卡片 ==========
+            function renderMembers() {
+                const container = document.getElementById('member');
+                container.innerHTML = ''; // 清空容器
+
+                members.forEach(member => {
+                    // 创建成员卡片容器
+                    const card = document.createElement('div');
+                    card.id = member.id;
+                    card.className = 'member_';
+
+                    // 创建头像
+                    const avatar = document.createElement('img');
+                    avatar.src = member.avatar;
+                    avatar.style.width = '15%';
+                    avatar.className = 'member';
+
+                    // 创建用户名
+                    const name = document.createElement('p');
+                    name.className = 'member';
+                    name.textContent = member.username;
+
+                    // 创建按钮
+                    const button = document.createElement('button');
+                    button.className = 'memberpage';
+                    button.textContent = '进我主页';
+                    button.onclick = function() {
+                        window.location.href = member.pageUrl;
+                    };
+
+                    // 组装卡片
+                    card.appendChild(avatar);
+                    card.appendChild(name);
+                    card.appendChild(button);
+                    container.appendChild(card);
+                });
+            }
+
+            // ========== 时钟更新 ==========
+            function updateTime() {
+                const e = document.getElementById('title-time');
+                const time = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
                 e.textContent = time;
             }
 
+            // ========== 初始化 ==========
+            renderMembers();
             updateTime();
-            setInterval(updateTime,500);
+            setInterval(updateTime, 500);
         </script>
     </body>
 </html>

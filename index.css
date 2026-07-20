@@ -1,9 +1,3 @@
-* {
-    margin:0;
-    padding:0;
-    box-sizing: border-box;
-}
-
 @font-face{
     font-family:"mc";
     src:url("./member/darkgodjim001/resource/Minecraft\ Seven_2.ttf");
@@ -11,6 +5,13 @@
 @font-face{
     font-family:"unifont";
     src:url("./member/darkgodjim001/resource/unifont-16.0.03.otf");
+}
+@media (max-width:768px) {
+    p{
+        font-family: 'mc','unifont';
+        font-size:16px;
+        color:azure;
+    }
 }
 
 body {
@@ -34,6 +35,11 @@ p{
     font-family: 'mc','unifont';
     font-size:24px;
     color:azure;
+}
+a{
+    font-family: 'mc','unifont';
+    font-size:24px;
+    color:blue;
 }
 
 .member_{
@@ -71,4 +77,22 @@ button {
 #member {
     padding-bottom: 30px;
     padding-top: 30px;
+}
+.video {
+    margin:0 auto;
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.res-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 12px;
+}
+#res {
+    display: flex;
+    justify-content: center;
 }
